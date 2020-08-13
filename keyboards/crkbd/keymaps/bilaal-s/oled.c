@@ -2,9 +2,9 @@
 
 extern uint8_t is_master;
 
-#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
-#    include "rgb.c"
-#endif
+//#if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+//#    include "rgb.c"
+//#endif
 
 #ifdef AUDIO_ENABLE
 extern audio_config_t audio_config;
