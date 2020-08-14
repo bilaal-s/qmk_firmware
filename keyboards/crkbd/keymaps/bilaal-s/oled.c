@@ -44,11 +44,11 @@ void render_layer(void) {
         {0x9a, 0x9b, 0x9c, 0x9d, 0x9e, 0},
     };
     uint8_t layer = 0;
-    if (layer_state_is(_LOWER)) {
+    if (get_highest_layer(layer_state) == _LOWER) {
         layer = 1;
-    } else if (layer_state_is(_RAISE)) {
+    } else if (get_highest_layer(layer_state) == _RAISE) {
         layer = 2;
-    } else if (layer_state_is(_ADJUST)) {
+    } else if (get_highest_layer(layer_state) == _ADJUST) {
         layer = 3;
     }
     oled_write_P(font_layer[layer], false);
@@ -189,11 +189,11 @@ void render_keylogger_status(void) {
 void render_prompt(void) {
     bool blink = (timer_read() % 1000) < 500;
 
-    if (layer_state_is(_LOWER)) {
+    if (get_highest_layer(layer_state) == _LOWER) {
         oled_write_ln_P(blink ? PSTR("> lo_") : PSTR("> lo "), false);
-    } else if (layer_state_is(_RAISE)) {
+    } else if (get_highest_layer(layer_state) == _RAISE) {
         oled_write_ln_P(blink ? PSTR("> hi_") : PSTR("> hi "), false);
-    } else if (layer_state_is(_ADJUST)) {
+    } else if (get_highest_layer(layer_state) == _ADJUST) {
         oled_write_ln_P(blink ? PSTR("> aj_") : PSTR("> aj "), false);
     } else {
         oled_write_ln_P(blink ? PSTR("> _  ") : PSTR(">    "), false);
@@ -217,7 +217,7 @@ void render_status_secondary(void) {
     oled_write_ln("", false);
 
     #if defined(RGB_MATRIX_ENABLE) || defined(RGBLIGHT_ENABLE) || defined(AUDIO_ENABLE)
-        layer_state_is(_ADJUST) ? render_feature_status() : render_mod_status();
+        get_highest_layer(layer_state) == _ADJUST ? render_feature_status() : render_mod_status();
     #else
         render_mod_status();
     #endif
