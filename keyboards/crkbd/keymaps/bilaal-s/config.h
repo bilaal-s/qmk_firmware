@@ -31,6 +31,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define TAPPING_TOGGLE 1
 #define TAPPING_TERM 200
+#define PERMISSIVE_HOLD
+#define RETRO_TAPPING
 
 #define OLED_FONT_H "keyboards/crkbd/keymaps/bilaal-s/glcdfont.c"
 
