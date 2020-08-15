@@ -189,7 +189,9 @@ void render_keylogger_status(void) {
 void render_prompt(void) {
     bool blink = (timer_read() % 1000) < 500;
 
-    if (get_highest_layer(layer_state) == _LOWER) {
+    if (get_highest_layer(layer_state) == _COLEMAK_DHM) {
+        oled_write_ln_P(blink ? PSTR("> col_") : PSTR("> col "), false);
+    } else if (get_highest_layer(layer_state) == _LOWER) {
         oled_write_ln_P(blink ? PSTR("> lo_") : PSTR("> lo "), false);
     } else if (get_highest_layer(layer_state) == _RAISE) {
         oled_write_ln_P(blink ? PSTR("> hi_") : PSTR("> hi "), false);
