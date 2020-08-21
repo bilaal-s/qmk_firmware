@@ -6,7 +6,7 @@
 #endif
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [TD_SFT_COL] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_RSFT, _COLEMAK_DHM),
+    [TD_SFT_COL] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_RSFT, _COLEMAK_DHM)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -16,9 +16,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       HCTL_TAB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, HCTL_QT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, TD_SFT_COL,
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, COLEMAK,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          LOWER,   KC_LGUI,  KC_SPC,         HLALT_ENT,  KC_RGUI,  RAISE
+                                          LOWER,   KC_LGUI,  HLALT_ENT,         KC_SPC,  KC_RGUI,  RAISE
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -88,12 +88,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return false;
       #endif
-      break;
-    case KC_BSPC:
-      if (record->event.pressed) {
-
-      }
-      return false;
       break;
   }
   return true;

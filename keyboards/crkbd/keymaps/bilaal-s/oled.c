@@ -190,7 +190,7 @@ void render_prompt(void) {
     bool blink = (timer_read() % 1000) < 500;
 
     if (get_highest_layer(layer_state) == _COLEMAK_DHM) {
-        oled_write_ln_P(blink ? PSTR("> col_") : PSTR("> col "), false);
+        oled_write_ln_P(PSTR("> Col"), false);
     } else if (get_highest_layer(layer_state) == _LOWER) {
         oled_write_ln_P(blink ? PSTR("> lo_") : PSTR("> lo "), false);
     } else if (get_highest_layer(layer_state) == _RAISE) {
@@ -249,7 +249,7 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 void oled_task_user(void) {
-    if (timer_elapsed(oled_timer) > 10000) {
+    if (timer_elapsed(oled_timer) > 60000) {
         oled_off();
         return;
     }
@@ -260,8 +260,8 @@ void oled_task_user(void) {
     #endif
 
     if (is_master) {
-        render_status_main();
-    } else {
         render_status_secondary();
+    } else {
+        render_status_main();
     }
 }
