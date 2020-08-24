@@ -249,16 +249,7 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 void oled_task_user(void) {
-    if (timer_elapsed(oled_timer) > 60000) {
-        oled_off();
-        return;
-    }
-    #ifndef SPLIT_KEYBOARD
-    else {
-        oled_on();
-    }
-    #endif
-
+    oled_on();
     if (is_master) {
         render_status_secondary();
     } else {

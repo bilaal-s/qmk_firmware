@@ -12,7 +12,7 @@ enum td {
     TD_SFT_COL,
 };
 
-enum custom_keycodes { RGBRST };
+enum custom_keycodes { RGBRST = SAFE_RANGE };
 
 #define COLEMAK TD(TD_SFT_COL)
 #define LOWER TT(_LOWER)
