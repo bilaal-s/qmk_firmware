@@ -2,7 +2,11 @@
 #include "keycodes.h"
 
 #ifdef OLED_DRIVER_ENABLE
-#    include "oled.c"
+  #include "oled.c"
+#endif
+
+#ifdef CONSOLE_ENABLE
+  #include <print.h>
 #endif
 
 qk_tap_dance_action_t tap_dance_actions[] = {
@@ -92,3 +96,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  #ifdef CONSOLE_ENABLE
+    uprintf("state: %u\n", get_highest_layer(layer_state));
+  #endif
+  return state;
+}
+
+#ifdef CONSOLE_ENABLE
+  void keyboard_post_init_user(void) {
+    debug_enable = true;
+    // debug_matrix=true;
+    // debug_keyboard=true;
+    // debug_mouse=true;
+  }
+#endif
