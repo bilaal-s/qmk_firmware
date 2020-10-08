@@ -15,8 +15,8 @@ enum td {
 enum custom_keycodes { RGBRST = SAFE_RANGE };
 
 #define COLEMAK TD(TD_SFT_COL)
-#define LOWER TT(_LOWER)
-#define RAISE MO(_RAISE)
+#define LOWER MO(_LOWER)
+#define RAISE TT(_RAISE)
 #define ADJUST MO(_ADJUST)
 
 #define HCTL_TAB MT(MOD_LCTL, KC_TAB)
